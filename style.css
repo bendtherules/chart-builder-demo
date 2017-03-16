@@ -1,0 +1,106 @@
+html, body
+{
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+body
+{
+    font-family: sans-serif;
+}
+
+*
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.header
+{
+    width: 100%;
+    height: 2.5em;
+
+    padding: .5em 0;
+
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.content
+{
+    width: 100%;
+
+    height: calc(100% - (2.5*1.2em));
+}
+
+.sidebar
+{
+    float: left;
+
+    width: 16%;
+    height: 100%;
+}
+
+.chooser>*
+{
+    width: 100%;
+    height: 50%;
+} 
+
+.chooser>*,.chosen>*
+{
+    padding: 0 .5em;
+}
+
+.main-content
+{
+    float: left;
+    position: relative;
+
+    width: 84%;
+    height: 100%;
+}
+
+.chosen
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.chosen-dim
+{
+    width: 100%;
+    height: 20%;
+}
+
+.chosen-measure
+{
+    width: 20%;
+    height: 80%;
+}
+
+.chart-container
+{
+    position: absolute;
+
+    top: 20%;
+    left: 20%;
+
+    width: 80%;
+    height: 80%;
+        
+    background-color: lightgray;
+}
+
+ul.unstyled-list
+{
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
