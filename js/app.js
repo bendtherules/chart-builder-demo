@@ -2,38 +2,38 @@ var app = angular.module("chart-builder",["ngDrag"]);
 
 app.value("allData",{
     "values":{
-        "Brand" : {
-            "Nike": {
-                "Sales":5000,
-                "Orders":6,
-                "Revenue":800
+        "Brand": {
+            "Sales":{
+                "Adidas": 3500,
+                "Reebok": 4000,
+                "Nike": 7999
             },
-            "Adidas": {
-                "Sales":4500,
-                "Orders":3,
-                "Revenue":753
+            "Orders":{
+                "Adidas": 680,
+                "Reebok": 700,
+                "Nike": 500
             },
-            "Reebok": {
-                "Sales":7120,
-                "Orders":12,
-                "Revenue":1200
+            "Revenue":{
+                "Adidas": 4000,
+                "Reebok": 12000,
+                "Nike": 8000
             }
         },
-        "Category" : {
-            "Laptop": {
-                "Sales":50000,
-                "Orders":600,
-                "Revenue":8000
+        "Category": {
+            "Sales":{
+                "Laptop": 50000,
+                "Mobile": 40000,
+                "E-reader": 8000
             },
-            "Mobile": {
-                "Sales":40000,
-                "Orders":300,
-                "Revenue":12000
+            "Orders":{
+                "Laptop": 600,
+                "Mobile": 300,
+                "E-reader": 50
             },
-            "E-reader": {
-                "Sales":8000,
-                "Orders":50,
-                "Revenue":800
+            "Revenue":{
+                "Laptop": 8000,
+                "Mobile": 12000,
+                "E-reader": 800
             }
         }
     },
@@ -128,4 +128,16 @@ app.controller("mainController", ["allData","$scope",function (allData,$scope) {
 
     }
 
+    $scope.$watchGroup(["data.values","data.chosenDimension","data.chosenMeasure"],function(){
+        if ($scope.data.chosenMeasure && $scope.data.chosenDimension){
+            var tmpData = $scope.data.values[$scope.data.chosenDimension][$scope.data.chosenMeasure];
+            var chartData = [];
+            var keys = Object.keys(tmpData);
+            for (var i = keys.length - 1; i >= 0; i--) {
+                chartData.push({"x":keys[i],"y":tmpData[keys[i]]});
+            }
+
+            drawChart(chartData);
+        }
+    });
 }]);
