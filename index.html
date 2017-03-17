@@ -52,7 +52,9 @@
                 </div>
             </div>
             <div class="chart-container">
-                
+                <div class="chart-selector-container">
+                    <select class="chart-selector" ng-options="chartName as chartName|uppercase for chartName in chartTypes" ng-model="chartTypeChosen"></select>
+                </div>
                 <div class="chart"></div>
                 
             </div>

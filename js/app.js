@@ -41,12 +41,18 @@ app.value("allData",{
     "measures": ["Sales","Orders","Revenue"]
 });
 
-app.controller("mainController", ["allData","$scope",function (allData,$scope) {
+app.value("chartTypes",["column","bar","pie"]);
+
+
+app.controller("mainController", ["allData","chartTypes","$scope",function (allData,chartTypes,$scope) {
     $scope.data = {};
     $scope.data.chooserDimensions = allData.dimensions;
     $scope.data.chosenDimension = undefined;
     $scope.data.chooserMeasures = allData.measures;
     $scope.data.chosenMeasure = undefined;
+
+    $scope.chartTypes = chartTypes;
+    $scope.chartTypeChosen = chartTypes[0];
 
     $scope.data.values = allData.values;
 
@@ -128,16 +134,28 @@ app.controller("mainController", ["allData","$scope",function (allData,$scope) {
 
     }
 
-    $scope.$watchGroup(["data.values","data.chosenDimension","data.chosenMeasure"],function(){
+    $scope.$watchGroup(["data.values","data.chosenDimension","data.chosenMeasure","chartTypeChosen"],function(){
         if ($scope.data.chosenMeasure && $scope.data.chosenDimension){
             var tmpData = $scope.data.values[$scope.data.chosenDimension][$scope.data.chosenMeasure];
             var chartData = [];
             var keys = Object.keys(tmpData);
-            for (var i = keys.length - 1; i >= 0; i--) {
-                chartData.push({"x":keys[i],"y":tmpData[keys[i]]});
+            var axisLabel;
+            if ($scope.chartTypeChosen.toLowerCase() === "bar")
+            {
+                for (var i = keys.length - 1; i >= 0; i--) {
+                    chartData.push({"y":keys[i],"x":tmpData[keys[i]]});
+                }
+                axisLabel = [$scope.data.chosenMeasure,$scope.data.chosenDimension];
+            }
+            else
+            {
+                for (var i = keys.length - 1; i >= 0; i--) {
+                    chartData.push({"x":keys[i],"y":tmpData[keys[i]]});
+                }   
+                axisLabel = [$scope.data.chosenDimension,$scope.data.chosenMeasure];
             }
 
-            drawChart(chartData,[$scope.data.chosenDimension,$scope.data.chosenMeasure]);
+            drawChart($scope.chartTypeChosen,chartData,axisLabel);
         }
         else
         {
