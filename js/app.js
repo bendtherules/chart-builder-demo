@@ -23,17 +23,17 @@ app.value("allData",{
             "Sales":{
                 "Laptop": 50000,
                 "Mobile": 40000,
-                "E-reader": 8000
+                "E-reader": 25000
             },
             "Orders":{
                 "Laptop": 600,
                 "Mobile": 300,
-                "E-reader": 50
+                "E-reader": 250
             },
             "Revenue":{
                 "Laptop": 8000,
                 "Mobile": 12000,
-                "E-reader": 800
+                "E-reader": 5000
             }
         }
     },

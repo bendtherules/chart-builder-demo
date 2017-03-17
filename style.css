@@ -149,11 +149,15 @@ ul.unstyled-list
 
 /* d3 styles*/
 .bar {
-  fill: steelblue;
+    fill: steelblue;
 }
 
-.bar:hover {
-  fill: brown;
+.bar:hover,.arc:hover path{
+    -webkit-transition: fill 0.5s;
+    -o-transition: fill 0.5s;
+    transition: fill 0.5s;
+    
+    fill: brown !important;
 }
 
 .axis--x path {
