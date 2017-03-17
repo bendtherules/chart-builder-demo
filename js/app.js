@@ -137,7 +137,11 @@ app.controller("mainController", ["allData","$scope",function (allData,$scope) {
                 chartData.push({"x":keys[i],"y":tmpData[keys[i]]});
             }
 
-            drawChart(chartData);
+            drawChart(chartData,[$scope.data.chosenDimension,$scope.data.chosenMeasure]);
+        }
+        else
+        {
+            cleanChart();
         }
     });
 }]);

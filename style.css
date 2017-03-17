@@ -100,7 +100,8 @@ body
     width: 100%;
     height: 100%;
         
-    background-color: lightgray;
+    /*background-color: lightgray;*/
+    overflow: hidden;
 }
 
 ul.unstyled-list
