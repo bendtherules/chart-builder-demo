@@ -8,7 +8,7 @@ app.directive("dynamicChart", function (d3Tip) {
         $scope.chartTypeChosen = $scope.chartTypes[0];
 
         $scope.$watch("[chartData,chartAxisLabel,chartTypeChosen]",function(){
-            console.log([$scope.chartData,$scope.chartAxisLabel]);
+            // console.log([$scope.chartData,$scope.chartAxisLabel]);
             if ($scope.chartTypeChosen && $scope.chartData){
                 drawChart($scope.chartTypeChosen,$scope.chartData,$scope.chartAxisLabel);
             }
@@ -300,7 +300,7 @@ app.directive("dynamicChart", function (d3Tip) {
               var indexDirection = Math.floor(midAngle/360 *8);
 
               var direction = availableDirection[indexDirection];
-              console.log(direction);
+              // console.log(direction);
               return direction;
             })
             .offset(function (d) {
@@ -312,8 +312,8 @@ app.directive("dynamicChart", function (d3Tip) {
               var extraRadius = 15;
               var posCentre = [-extraRadius*Math.sin(midAngle),-extraRadius*Math.cos(midAngle)];
 
-              console.log(midAngle*180/Math.PI);
-              console.log(posCentre);
+              // console.log(midAngle*180/Math.PI);
+              // console.log(posCentre);
               return posCentre;
             });
 

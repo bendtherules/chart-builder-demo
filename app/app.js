@@ -43,13 +43,17 @@ app.value("allData",{
 
 
 app.controller("mainController", ["allData","$scope",function (allData,$scope) {
-    $scope.data = {};
-    $scope.data.chooserDimensions = allData.dimensions;
-    $scope.data.chosenDimension = undefined;
-    $scope.data.chooserMeasures = allData.measures;
-    $scope.data.chosenMeasure = undefined;
+    init();
 
-    $scope.data.values = allData.values;
+    function init() {
+        $scope.data = {};
+        $scope.data.chooserDimensions = allData.dimensions;
+        $scope.data.chosenDimension = undefined;
+        $scope.data.chooserMeasures = allData.measures;
+        $scope.data.chosenMeasure = undefined;
+
+        $scope.data.values = allData.values;
+    }
 
     $scope.allowDrop = function(ev,location) {
         // var prevLocation = ev.dataTransfer.getData("location");
@@ -127,5 +131,17 @@ app.controller("mainController", ["allData","$scope",function (allData,$scope) {
             $scope.data[curDataName] = value;   
         }
 
+    }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    $scope.plotRandom = function () {
+        var indexDimension = getRandomInt(0,($scope.data.chooserDimensions.length - 1));
+        var indexMeasure = getRandomInt(0,($scope.data.chooserMeasures.length - 1));
+
+        moveData("chooser.dimension","chosen.dimension", $scope.data.chooserDimensions[indexDimension]);
+        moveData("chooser.measure","chosen.measure", $scope.data.chooserMeasures[indexMeasure]);
     }
 }]);
