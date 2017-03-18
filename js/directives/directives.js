@@ -347,7 +347,7 @@ app.directive("dynamicChart", function () {
     };
    return {
         restrict: "EA",
-        templateUrl: "/js/directives/dynamic-chart/dynamic-chart.html",
+        templateUrl: "./js/directives/dynamic-chart/dynamic-chart.html",
         scope: {
             chartData: "=",
             chartAxisLabel: "="
