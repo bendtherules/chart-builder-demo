@@ -1,4 +1,4 @@
-var app = angular.module("chart-builder",["ngDrag"]);
+var app = angular.module("chart-builder",["ngDrag","chart-builder.filters"]);
 
 app.value("allData",{
     "values":{
