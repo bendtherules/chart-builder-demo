@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/js/directives/dynamic-chart/dynamic-chart.css">
+</head>
+<body>
+    <div class="chart-selector-container">
+        <select class="chart-selector" ng-options="chartName as chartName|sentencecase for chartName in chartTypes" ng-model="chartTypeChosen"></select>
+    </div>
+    <div class="chart"></div>
+</body>
+</html>

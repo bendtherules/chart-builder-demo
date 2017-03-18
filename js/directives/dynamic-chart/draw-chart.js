@@ -1,16 +1,47 @@
-
 function drawChart(type,data,axisLabel) {
   var typeMapping = {
     "column" : drawColumnChart,
     "bar" : drawBarChart,
     "pie" : drawPieChart
   };
+
+  var processedData = processData();
+  data = processData.data;
+  axisLabel = processData.axisLabel;
+
   if (typeof(type) === "string"){
     var drawFunc = typeMapping[type.toLowerCase()];
     if (typeof(drawFunc) !== undefined){
       drawFunc(data,axisLabel);
     }
   }
+}
+
+function processData(data,axisLabel) {
+  var tmpData = data;
+  var tmpAxisLabel = axisLabel;
+  var newData = [];
+  var keys = Object.keys(tmpData);
+  var newAxisLabel;
+  if ($scope.chartTypeChosen.toLowerCase() === "bar")
+  {
+      for (var i = keys.length - 1; i >= 0; i--) {
+          newData.push({"y":keys[i],"x":tmpData[keys[i]]});
+      }
+      newAxisLabel = [tmpAxisLabel[1],tmpAxisLabel[0]];
+  }
+  else
+  {
+      for (var i = keys.length - 1; i >= 0; i--) {
+          newData.push({"x":keys[i],"y":tmpData[keys[i]]});
+      }   
+      newAxisLabel = tmpAxisLabel;
+  }
+
+  return {
+    "data": newData,
+    "axisLabel": newAxisLabel
+  };
 }
 
 function drawColumnChart(data,axisLabel)

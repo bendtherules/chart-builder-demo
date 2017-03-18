@@ -1,0 +1,38 @@
+.chart-selector-container
+{
+    width: 100%;
+    height: 3em;
+    padding: 1em;
+}
+
+.chart-selector
+{
+    float: right;
+    /*margin-right: 1em;*/
+}
+
+.chart
+{
+    width: 100%;
+    height: calc(100% - 3em);
+        
+    /*background-color: lightgray;*/
+    overflow: hidden;
+}
+
+/* d3 styles*/
+.bar {
+    fill: steelblue;
+}
+
+.bar:hover,.arc:hover path{
+    -webkit-transition: fill 0.5s;
+    -o-transition: fill 0.5s;
+    transition: fill 0.5s;
+    
+    fill: brown !important;
+}
+
+.axis-x path {
+  display: none;
+}
