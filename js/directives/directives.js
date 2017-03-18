@@ -2,7 +2,7 @@ var app = angular.module("chart-builder.directives",["chart-builder.filters"]);
 
 app.value("chartTypes",["column","bar","pie"]);
 
-app.directive("dynamicChart", function () {
+app.directive("dynamicChart", function (d3Tip) {
     var controller = function (chartTypes,$scope) {
         $scope.chartTypes = chartTypes;
         $scope.chartTypeChosen = $scope.chartTypes[0];
@@ -124,7 +124,7 @@ app.directive("dynamicChart", function () {
             .attr("shape-rendering","crispEdges")
             .text(yLabel);
 
-          var tip_points = d3.tip()
+          var tip_points = d3Tip.tip
             .attr('class', 'd3-tip')
             .html(function(d) { return d.y; });
 
@@ -207,7 +207,7 @@ app.directive("dynamicChart", function () {
             .attr("shape-rendering","crispEdges")
             .text(yLabel);
 
-          var tip_points = d3.tip()
+          var tip_points = d3Tip.tip
             .attr('class', 'd3-tip')
             .html(function(d) { return d.x; })
             .direction("e")
@@ -290,7 +290,7 @@ app.directive("dynamicChart", function () {
             .attr('text-anchor', 'middle')
             .text(""+yLabel+" vs. "+xLabel);
 
-            var tip_points = d3.tip()
+            var tip_points = d3Tip.tip
             .attr('class', 'd3-tip')
             .html(function(d) {return d.data.y; })
             .direction(function(d){
