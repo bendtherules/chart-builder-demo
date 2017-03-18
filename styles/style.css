@@ -124,3 +124,10 @@ ul.unstyled-list
 {
     border-top: none;
 }
+
+li[draggable] {
+    background-color: darkcyan;
+    color: white;
+    padding: .25em .5em;
+    margin: .5em 0;
+}
