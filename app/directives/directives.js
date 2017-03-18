@@ -126,7 +126,8 @@ app.directive("dynamicChart", function (d3Tip) {
 
           var tip_points = d3Tip.tip
             .attr('class', 'd3-tip')
-            .html(function(d) { return d.y; });
+            .html(function(d) { return d.y; })
+            .direction("n");
 
           var vis = svg.call(tip_points);
 
