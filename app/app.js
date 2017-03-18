@@ -10,25 +10,25 @@ app.value("allData",{
             },
             "Orders":{
                 "Adidas": 680,
-                "Reebok": 700,
+                "Reebok": 900,
                 "Nike": 500
             },
             "Revenue":{
                 "Adidas": 4000,
-                "Reebok": 12000,
+                "Reebok": 1000,
                 "Nike": 8000
             }
         },
         "Category": {
             "Sales":{
-                "Laptop": 50000,
-                "Mobile": 40000,
-                "E-reader": 25000
+                "Laptop": 30000,
+                "Mobile": 10000,
+                "E-reader": 5000
             },
             "Orders":{
-                "Laptop": 600,
+                "Laptop": 60,
                 "Mobile": 300,
-                "E-reader": 250
+                "E-reader": 100
             },
             "Revenue":{
                 "Laptop": 8000,
