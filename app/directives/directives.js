@@ -95,7 +95,7 @@ app.directive("dynamicChart", function (d3Tip) {
           g.append("g")
               .attr("class", "axis axis-y")
               .style("font-size",".75em")
-              .call(d3.axisLeft(y).ticks(10).tickFormat(d3.format(".0s")))
+              .call(d3.axisLeft(y).ticks(10).tickFormat(d3.format(" .2s")))
             .append("text")
               .attr("transform", "translate(15,0) rotate(-90)")
               .attr("y", 6)
@@ -175,7 +175,7 @@ app.directive("dynamicChart", function (d3Tip) {
               .attr("class", "axis axis-x")
               .style("font-size",".75em")
               .attr("transform", "translate(0," + height + ")")
-              .call(d3.axisBottom(x).ticks(10).tickFormat(d3.format(".0s")));
+              .call(d3.axisBottom(x).ticks(10).tickFormat(d3.format(" .2s")));
 
           g.append("g")
               .attr("class", "axis axis-y")
